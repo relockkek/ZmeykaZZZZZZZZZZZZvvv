@@ -1,10 +1,14 @@
-﻿namespace Snake1125.Game.Objects
+﻿using Snake1125;
+using System;
+using System.Drawing;
+namespace Snake1125.Game.Objects
 {    
     
     internal class Snake : GameObject
     {
         int Kolobok = 0;
 
+       
         public override int X { get => cells[0].X; set { } }
         public override int Y { get => cells[0].Y; set { } }
 
@@ -15,11 +19,11 @@
         List<GameObject> cells;
 
         Stack<GameObject> stackTale = new();
-
         public Snake(int x, int y)
         {
             cells = new() { new GameObject { X = x, Y = y } };
         }
+
 
         internal void Move()
         {
@@ -29,8 +33,7 @@
                 cells[i].X = cells[i - 1].X;
                 cells[i].Y = cells[i - 1].Y;
             }
-            
-
+           
             switch (Direction)
             {
                 case Direction.up:
@@ -55,12 +58,35 @@
                     break;
                 }
             }
+            
+            if (cells[0].X > 500)
+            {
+                IsAlive = false;
+               
+            }
+            if (cells[0].Y > 500)
+            {
+                IsAlive = false;
+            }
+            if (cells[0].X < 0)
+            {
+                IsAlive = false;
+
+
+            }
+            if (cells[0].Y < 0)
+            {
+                IsAlive = false;
+            }
         }
+
        
         internal void Increase()
         {
             cells.Add(new GameObject { X = cells[^1].X, Y = cells[^1].Y });
             Kolobok++;
+            Console.WriteLine($"Набрано очков: {Kolobok}");
+
 
         }
 
@@ -68,14 +94,19 @@
         {
             if (cells.Count == 1)
             {
+
                 IsAlive = false;
                 return;
+
+
             }
             Kolobok--;
-          
-           
+            Console.WriteLine($"Набрано очков: {Kolobok}");
+
+
             stackTale.Push(new GameObject { X = cells[^1].X, Y = cells[^1].Y });
             cells.Remove(cells[^1]);
+
         }
     }
 }

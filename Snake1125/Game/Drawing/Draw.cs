@@ -16,6 +16,7 @@ namespace Snake1125.Game.Drawing
             RegistrationDraw(typeof(Snake), new SnakeDraw());
             RegistrationDraw(typeof(Apple), new AppleDraw());
             RegistrationDraw(typeof(Trap), new TrapDraw());
+            RegistrationDraw(typeof(Zone), new ZoneDraw());
         }
 
         void RegistrationDraw(Type type, IDraw draw)

@@ -11,6 +11,7 @@ namespace Snake1125
         GameField field;
         Control control;
         Snake snake;
+        Zone zone;
         bool stop = false;
 
         public bool SnakeIsAlive { get => !stop && snake.IsAlive; }        
@@ -19,6 +20,7 @@ namespace Snake1125
         {
             draw = new DrawSystem();
             control = new Control();
+            zone = new Zone(0, 0);
         }
 
         void CreateSnake()
@@ -43,6 +45,7 @@ namespace Snake1125
         {
             control.Run(this);
             draw.Draw(field);
+            draw.Draw(zone);
             while (SnakeIsAlive)
             {
                 snake.Move();

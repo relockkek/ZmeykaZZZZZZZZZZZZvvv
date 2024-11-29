@@ -1,18 +1,26 @@
-﻿namespace Snake1125
+﻿using Snake1125.Game.Objects;
+namespace Snake1125
+
 {
     internal class Program
     {
+        static string nameof;
         /// <summary>
         /// Стартовый метод приложения. Игра стартует с помощью инициализации класса SnakeGame и запуска его метода Start
         /// </summary>
         /// <param name="args">Аргументы, переданные приложению при запуске</param>
         static void Main(string[] args)
         {
+
+            Console.Write("Введите имя игрока: ");
+            nameof = Console.ReadLine();
             Console.WriteLine("Нажми Enter для запуска");
             Console.ReadLine();
             SnakeGame game = new SnakeGame();
             game.Start();
+            Console.Clear();
         }
+
     }
 }
 
