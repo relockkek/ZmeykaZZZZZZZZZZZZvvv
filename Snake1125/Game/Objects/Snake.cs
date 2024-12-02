@@ -58,7 +58,6 @@ namespace Snake1125.Game.Objects
                     break;
                 }
             }
-            
             if (cells[0].X > 500)
             {
                 IsAlive = false;
@@ -80,16 +79,27 @@ namespace Snake1125.Game.Objects
             }
         }
 
+        internal void lol()
+        {
+
+        }
        
         internal void Increase()
         {
             cells.Add(new GameObject { X = cells[^1].X, Y = cells[^1].Y });
             Kolobok++;
-            Console.WriteLine($"Набрано очков: {Kolobok}");
 
-
+            OnLengthChanged?.Invoke(this, null);
         }
 
+       public event EventHandler OnLengthChanged;
+       public int SpeedBoost(int speedmain)
+        {
+            Kolobok++;
+            int speed = Kolobok;
+            speed = speed - speedmain;
+            return speed;
+        }
         internal void Decrease()
         {
             if (cells.Count == 1)
@@ -106,6 +116,7 @@ namespace Snake1125.Game.Objects
 
             stackTale.Push(new GameObject { X = cells[^1].X, Y = cells[^1].Y });
             cells.Remove(cells[^1]);
+            OnLengthChanged?.Invoke(this, null);
 
         }
     }

@@ -1,6 +1,7 @@
 ﻿using Snake1125.Game.Objects;
 using System.Drawing;
 
+
 namespace Snake1125.Game.Drawing.DrawObjects
 {
     internal class SnakeDraw : IDraw
@@ -14,7 +15,13 @@ namespace Snake1125.Game.Drawing.DrawObjects
                 graphics.FillEllipse(Brushes.Black, tale.X, tale.Y, 10, 10);
                 tale = snake.Tale;
             }
-            graphics.FillEllipse(Brushes.SandyBrown, snake.X, snake.Y, 10, 10);
+
+            graphics.FillEllipse(Brushes.Red, snake.X, snake.Y, 10, 10);
+          
+            {
+                graphics.FillEllipse(Brushes.Blue, snake.X, snake.Y, 10, 10);
+            }
+             
         }
     }
 }

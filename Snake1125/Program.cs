@@ -18,7 +18,6 @@ namespace Snake1125
             Console.ReadLine();
             SnakeGame game = new SnakeGame();
             game.Start();
-            Console.Clear();
         }
 
     }
